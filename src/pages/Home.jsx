@@ -9,7 +9,7 @@ import FlatCard from "../components/shared/FlatCard";
 const Home = () => {
   return (
     <>
-      <div className="w-full h-[calc(100vh - 4rem)] p-3 ">
+      <div className=" w-full h-[calc(100vh - 4rem)] p-3 ">
         <Box
           boxShadow={{
             md: "0 0 10px 0 rgba(0, 0, 0, 0.5)",

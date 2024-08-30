@@ -2,14 +2,28 @@ import React, { useState } from "react";
 import Title from "../shared/Title";
 import Header from "../shared/Header";
 import Typography from "@mui/material/Typography";
-import { Drawer, Grid } from "@mui/material";
+import { Drawer, Grid, Stack, styled } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsMobile } from "../../redux/reducer/misc";
+import { Dashboard } from "@mui/icons-material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { Link, useNavigate } from "react-router-dom";
+
+const tabs = [
+  {
+    name: "Overview",
+    path: "/",
+  },
+  {
+    name: "People Directory",
+    path: "/people",
+  },
+];
 
 const AppLayout = () => (WrappedComponent) => {
   return (props) => {
     const dispatch = useDispatch();
-
+    const navigate = useNavigate();
     const { isMobile } = useSelector((state) => state.misc);
     const handleMobileClose = () => {
       dispatch(setIsMobile(false));
@@ -31,14 +45,9 @@ const AppLayout = () => (WrappedComponent) => {
             md={3}
             sx={{
               display: { xs: "none", sm: "block" },
-              backgroundColor: "red",
             }}
             height={"100%"}
-          >
-            <Typography variant="h1" color="initial">
-              list
-            </Typography>
-          </Grid>
+          ></Grid>
           <Grid
             item
             xs={12}
