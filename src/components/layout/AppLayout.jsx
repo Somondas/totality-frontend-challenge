@@ -3,13 +3,18 @@ import Title from "../shared/Title";
 import Header from "../shared/Header";
 import Typography from "@mui/material/Typography";
 import { Drawer, Grid } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsMobile } from "../../redux/reducer/misc";
 
 const AppLayout = () => (WrappedComponent) => {
   return (props) => {
-    const [isMobile, setIsMobile] = useState(true);
+    const dispatch = useDispatch();
+
+    const { isMobile } = useSelector((state) => state.misc);
     const handleMobileClose = () => {
-      setIsMobile(false);
+      dispatch(setIsMobile(false));
     };
+
     return (
       <>
         <Title />
@@ -37,7 +42,7 @@ const AppLayout = () => (WrappedComponent) => {
           <Grid
             item
             xs={12}
-            sx={{ backgroundColor: "pink" }}
+            // sx={{ backgroundColor: "pink" }}
             sm={8}
             md={9}
             lg={9}

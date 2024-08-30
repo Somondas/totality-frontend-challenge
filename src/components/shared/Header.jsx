@@ -1,8 +1,13 @@
 import { Menu } from "@mui/icons-material";
 import { AppBar, Box, IconButton, Toolbar, Typography } from "@mui/material";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsMobile } from "../../redux/reducer/misc";
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const handleMobile = () => dispatch(setIsMobile(true));
   return (
     <>
       <Box sx={{ flexGrow: 1 }} height={"4rem"}>
@@ -26,7 +31,7 @@ const Header = () => {
                 display: { xs: "block", sm: "none" },
               }}
             >
-              <IconButton color="inherit">
+              <IconButton color="orange" onClick={handleMobile}>
                 <Menu />
               </IconButton>
             </Box>
